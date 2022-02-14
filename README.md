@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+# Applying Post Prediction Inference to the NFL: How We Strive to Reinvent Sports Analysis
+ > A group project by Jonathan Langley, Sujeet Yeramareddy, and Yong Liu
+### Introduction
 
-You can use the [editor on GitHub](https://github.com/JonLangley2022/JonLangley2022.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+For our 180B project, my group decided to use our domain methodology of postpi (post prediction inference) and apply it to sports analysis based on NFL games.  We are designing a model that can predict the outcome of a football game, such as which team will win and what the margin of their victory will be, and then correcting the statistical inference for selected key features.  The main goals of our investigation is discerning which features most strongly determine the victor of a football game, and subsequently which features provide the most significant means of inferring the margin of that victory.  For example, does the home field advantage give a 50% higher chance of winning by 7 points?  Is the comparative offense to defense rating the most critical factor in securing a win?  Does or does not weather play a statistically significant part in influencing margin of victory?  These are just some of the questions we have brought up and seek to answer during the course of our research, and by conducting this project we are attempting to revolutionize the way NFL analytics are conducted via a more accurate statistical method of inference, postpi. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Data Collection
 
-### Markdown
+### Data Cleaning & EDA
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Building Neural Network ML Model
 
-```markdown
-Syntax highlighted code block
+### Applying Postpi to MLP Neural Network Model
 
-# Header 1
-## Header 2
-### Header 3
+### Results: Improvements and Concerns
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/JonLangley2022/JonLangley2022.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
