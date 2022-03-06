@@ -21,7 +21,9 @@ For our 180B project, my group decided to use our domain methodology of postpi (
 
 ### Applying Postpi to MLP Neural Network Model
 
-### Results: Improvements and Concerns
+### Results
+
+### Limitations + Improvements
 
 
 
