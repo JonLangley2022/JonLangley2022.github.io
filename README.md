@@ -1,10 +1,8 @@
-# DSC 180B Capstone Project
-(fix for some reason double title)
 
 (edit background and title color (why red?)
 # Applying Post Prediction Inference to the NFL: How We Strive to Reinvent Sports Analysis
  
- > A group project by Jonathan Langley, Sujeet Yeramareddy, and Yong Liu
+ > By: Jonathan Langley, Sujeet Yeramareddy, and Yong Liu
 
 (insert subtitle instead of "quote" text, doesn't format right
 ### Introduction
