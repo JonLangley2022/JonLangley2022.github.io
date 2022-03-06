@@ -15,11 +15,9 @@ For our 180B project, my group decided to use our domain methodology of postpi (
 
 ### Data Cleaning & EDA
 
-### Website 
-
 ### Building Neural Network ML Model
 
-### Applying Postpi to MLP Neural Network Model
+### Applying Post-Prediction Inference
 
 ### Results
 
