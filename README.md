@@ -12,6 +12,9 @@ For our 180B project, we decided to use our domain methodology of postpi (post p
    Data source: stathead.com/football
    It is quite complicate and even more time-consuming to automated the scrapting process because we can only access to 100 rows of data at a time per feature (you had to click next at the bottom of the page to go on to rows 200-299, etc) and each feature will have different filter setting on the website.Therefore,we decided to manually copy and save the 10 csv files as we are interested in these  stats: fitst down, passing completion, rush yards,total yards, penalties, temperature at game day,first down. 
 ### Data Cleaning & EDA
+ After merging all of the csv table we end up with a single csv with 5632 NFL games played from 2000 to 2021 but we actually have 11264 rows datapoints because of different home/away parameters. The combined dataset consisted of 64 total columns ranging from the year the game took place in, to the number of passes completed in the game, to percent of passes completed in the game. 
+ A heatmap of null values allowed us to visually identify that 9 columns had 100-301 null values, with a tenth (temperature) having almost 2500 missing values.	
+
 
 ### Building Neural Network ML Model
  Through testing ,we finalized our N-N (MLPregressor) model with 4 hidden layer and with the size of (32,64,64,128); The maximum epochs(how many times each data point will be use) of the model setting is 200; The fraction of the validation set is 20% of the training data. According to the training loss curve , the training seems to stop around 80 epochs. 
