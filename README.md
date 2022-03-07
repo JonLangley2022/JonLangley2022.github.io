@@ -24,6 +24,13 @@ For our 180B project, we decided to use our domain methodology of postpi (post p
 
 
 ### Applying Post-Prediction Inference
+With the prediction model complete, we implemented the postpi functions and set out to see how much inference correction (if any) could be acheieved on a wide range of covariates of interest.
+
+_insert permutation importance graph here
+
+Postpi was applied to a total of 8 covariates, ranging from the top two most important features to the prediction model (QB Rating and RushTD) to moderately important features (TOP and 1stD) to entirely unimportant features (Temperature)
+
+
 
 ### Results
 
