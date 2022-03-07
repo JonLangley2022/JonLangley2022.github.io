@@ -28,8 +28,21 @@ With the prediction model complete, we implemented the postpi functions and set 
 
 _insert permutation importance graph here
 
-Postpi was applied to a total of 8 covariates, ranging from the top two most important features to the prediction model (QB Rating and RushTD) to moderately important features (TOP and 1stD) to entirely unimportant features (Temperature)
+Postpi was applied to a total of 4 covariates, ranging from the top most important features to the prediction model (RushTD and QB Rating) to moderate/low importance features (TOP and 1stD)
 
+-insert figure 2 here, dropdown for each of teh covariates
+
+Two plots were made for each feature, one showing the covariate of interest compared to the _observed_ outcome and one showing the covariate of interest to the _predicted_ outcome.  
+
+As can be seen for all of the features, the covariate compared to the predicted outcomes tend to show lower data spread and variance compared to the observed outcomes, increasing bias.
+
+Next, we verify a key assumption of postpi, that the relationship between predicted and observed outcomes can be low-dimensionally modeled (such as via linear regression) despite the complexity of the prediction model
+
+-insert figure 3 here, dropdown for each  of the covariates
+
+For each of the covariates, a strong linear relationship is present between the observed and predicted outcomes for both the baseline linear regression model and the MLP Neural Network prediction model.
+
+Inference correction can be conducted solely by using a linear or logistic regressioin relationship model fitted on the observed and predicted outcomes, but a more thorough and advanced correction can be achieved via the bootstrap method
 
 
 ### Results
