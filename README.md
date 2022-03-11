@@ -25,30 +25,38 @@ For our 180B project, we decided to use our domain methodology of postpi (post p
 
 
 ### Applying Post-Prediction Inference
-With the prediction model complete, we implemented the postpi functions and set out to see how much inference correction (if any) could be acheieved on a wide range of covariates of interest.
+The permutation graph shows the importance of each feature to the prediction model, but in order to accurately gauge the effectiveness of postpi on inference correction for our data we must apply postpi to each of our covariates, later on in our results we will feature our findings for two high importance features (RushTD and QBRating) and two moderate/low importance features (TOP and 1stD).
+First, some definitions of what exactly postpi is.  Postpi is a method for improving statistical inference by correcting model bias and improving variance estimations.  Model bias refers to the difference between average prediction and the correct observation the model is attempting to predict, high bias is due to an under-fitted prediction model and leads to high training/testing error. Variance estimation relates to a model’s ability to predict on testing and unseen data, high variance is due to over-fitting on training data and leads to high test error.
 
-_insert permutation importance graph here
+Statistical inference (and the strength of the inference) refers to the analyst's capactiy to derive a trend of relationship between a covariate of interest and the outcome in a sample population, and then apply it to the entire population.
 
-Postpi was applied to a total of 4 covariates, ranging from the top most important features to the prediction model (RushTD and QB Rating) to moderate/low importance features (TOP and 1stD)
+A hypothetical example to help understand this in the context of sports analytics is a "Home Field Advantage Inference" example.  A sports analyst takes a random sample of NFL games and finds statistically significant results that a team playing on its home turf has around a 10-15% higher chance of winning. Because of the analyst’s strong findings, they can provide reliable statistical inference across all NFL games (future or otherwise) that a team playing on their home turf has around a 10-15% higher chance of winning.
 
--insert figure 2 here, dropdown for each of teh covariates
+Now that we have some key definitions explained, we can move onto the actual implementation of postpi.  With our well tuned prediction model ready for use, we apply it on the test set to generate a list of predicted and observed outcomes.  A key aspect of post inference correction is producing a low dimensional (in our case linear regression) model to capture the relationship between the test set's observed and predicted outcomes.  We will later on use the relationship model to simulate "observed outcomes" by plugging in predicted outcomes and returning corrected predictions.  Inference correction by altering the prediction model would be possible for a simple model, however it would be nearly impossible to conduct meaningful improvement by altering a highly complex model such as MLP Neural Networks.  
 
-Two plots were made for each feature, one showing the covariate of interest compared to the _observed_ outcome and one showing the covariate of interest to the _predicted_ outcome.  
+Here we highlight our findings thusfar on our aforementioned four covariates of interest.  The first set of graphs compare the covariate of interest to the observed and to the predicted outcomes.  You'll see that for all 4, the predicted outcomes share a very similar relationship to the observed, but do tend to show less variance and more bunching near the central lines.
 
-As can be seen for all of the features, the covariate compared to the predicted outcomes tend to show lower data spread and variance compared to the observed outcomes, increasing bias.
+-insert dropdowns for the 4 figure 2 plots
 
-Next, we verify a key assumption of postpi, that the relationship between predicted and observed outcomes can be low-dimensionally modeled (such as via linear regression) despite the complexity of the prediction model
 
--insert figure 3 here, dropdown for each  of the covariates
+In the next set of graphs we compare the relationship models generated on each covariate of interest from the NN and baseline (linear regression) models.  You can see that despite the complexity difference between neural network and linear regression, they all successfully generate a linear relationship between the observed and predicted outcomes.  Furthermore, it's clear to see that the MLP NN does a far better job across the board at capturing the relationship as the linearity is much stronger.
 
-For each of the covariates, a strong linear relationship is present between the observed and predicted outcomes for both the baseline linear regression model and the MLP Neural Network prediction model.
 
-Inference correction can be conducted solely by using a linear or logistic regressioin relationship model fitted on the observed and predicted outcomes, but a more thorough and advanced correction can be achieved via the bootstrap method
+-insert dropdowns for the 4 figure 3 plots
+
+Having established that the relationship models are strong and function as expected, the next step is implementing bootstrap based correction on the validation set.  The bootstrap repeatedly samples from validation data to better represent the entire population, generates an inference model for each iteration, and returns aggregated metrics for the inference models' corrected beta estimates, standard errors, test statistics, and p-values.
+
+ 
+
+
+
+
 
 
 ### Results
 
-### Limitations + Improvements
+For every one of the featured covariates (and indeed for all of the covariates in our data set), the T-Statistics and P-Values graphs provide a clear answer to the to the question “to what degree, if any, will postpi provide statistical inference correction for our NFL sports analysis?” The answer to that being “not much”, apparently. While the exact reasoning as to why postpi didn’t help out much here can’t be confidently stated, we can speculate that the very high accuracy of our MLP Neural Network prediction model effectively expressed the link between each of our covariates and the game spread outcome. 
+
 
 
 
