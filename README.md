@@ -104,7 +104,7 @@ According to our permutation graph, RushTD , QBRating, and PassTD are the three 
  
 
 
-### <ins> 6.Applying Post-Prediction Inference
+### <ins> 6.### Applying Post-Prediction Inference
 The permutation graph shows the importance of each feature to the prediction model, but in order to accurately gauge the effectiveness of postpi on inference correction for our data we must apply postpi to each of our covariates, later on in our results we will feature our findings for two high importance features (RushTD and QBRating) and two moderate/low importance features (TOP and 1stD).
 First, some definitions of what exactly postpi is.  Postpi is a method for improving statistical inference by correcting model bias and improving variance estimations.  Model bias refers to the difference between average prediction and the correct observation the model is attempting to predict, high bias is due to an under-fitted prediction model and leads to high training/testing error. Variance estimation relates to a model’s ability to predict on testing and unseen data, high variance is due to over-fitting on training data and leads to high test error.
 
@@ -117,22 +117,22 @@ Now that we have some key definitions explained, we can move onto the actual imp
 >Here we highlight our findings thusfar on our aforementioned four covariates of interest.  The first set of graphs compare the covariate of interest to the observed and to the predicted outcomes.  You'll see that for all 4, the predicted outcomes share a very similar relationship to the observed, but do tend to show less variance and more bunching near the central lines.
 
 
-<details open>
+<details closed>
 <summary>RushTD</summary>
 <img src="docs/assets/images/rushtd_pics/postpi_Fig2-2.png">
 </details>
 
-<details open>
+<details closed>
 <summary>QBRating</summary>
 <img src="docs/assets/images/qbr_pics/qb_postpi_Fig2.png">
 </details>
 
-<details open>
+<details closed>
 <summary>TOP</summary>
 <img src="docs/assets/images/top_pics/top_postpi_Fig2.png">
 </details>
 
-<details open>
+<details closed>
 <summary>1stD</summary>
 <img src="docs/assets/images/1st_D_pics/postpi_Fig2.png">
 </details>
@@ -142,22 +142,22 @@ Now that we have some key definitions explained, we can move onto the actual imp
 
 
 
-<details open>
+<details closed>
 <summary>RushTD</summary>
 <img src="docs/assets/images/rushtd_pics/postpi_Fig3-2.png">
 </details>
 
-<details open>
+<details closed>
 <summary>QBRating</summary>
 <img src="docs/assets/images/qbr_pics/qb_postpi_Fig3.png">
 </details>
 
-<details open>
+<details closed>
 <summary>TOP</summary>
 <img src="docs/assets/images/top_pics/top_postpi_Fig3.png">
 </details>
 
-<details open>
+<details closed>
 <summary>1stD</summary>
 <img src="docs/assets/images/1st_D_pics/postpi_Fig3.png">
 </details>
@@ -165,95 +165,95 @@ Now that we have some key definitions explained, we can move onto the actual imp
 Having established that the relationship models are strong and function as expected, the next step is implementing bootstrap based correction on the validation set.  The bootstrap repeatedly samples from validation data to better represent the entire population, generates an inference model for each iteration, and returns aggregated metrics for the inference models' corrected beta estimates, standard errors, test statistics, and p-values.
 
  
-<details open>
+<details closed>
 <summary>RushTD</summary>
 
-<details open>
-<summary>Beta Estimate</summary>
+<details closed>
+ <summary>Beta Estimate</summary>
 <img src="docs/assets/images/Hextri_Plots/RushTD/Beta_Estimates.png">
 </details>
 
-<details open>
+<details closed>
 <summary>Standard Error</summary>
 <img src="docs/assets/images/Hextri_Plots/RushTD/Standard_Errors.png">
 </details>
 
-<details open>
+<details closed>
 <summary>T-Statistic</summary>
 <img src="docs/assets/images/Hextri_Plots/RushTD/T_Statistics.png">
 </details>
 
-<details open>
+<details closed>
 <summary>P-Value</summary>
 <img src="docs/assets/images/Hextri_Plots/RushTD/P_Values.png">
 </details>
 
 </details>
 
-<details open>
+<details closed>
 <summary>QBRating</summary>
-<details open>
+<details closed>
 <summary>Beta Estimate</summary>
 <img src="docs/assets/images/Hextri_Plots/QBRating/Beta_Estimates.png">
 </details>
 
-<details open>
+<details closed>
 <summary>Standard Error</summary>
 <img src="docs/assets/images/Hextri_Plots/QBRating/Standard_Errors.png">
 </details>
 
-<details open>
+<details closed>
 <summary>T-Statistic</summary>
 <img src="docs/assets/images/Hextri_Plots/QBRating/T_Statistics.png">
 </details>
 
-<details open>
+<details closed>
 <summary>P-Value</summary>
 <img src="docs/assets/images/Hextri_Plots/QBRating/P_Values.png">
 </details>
 </details>
 
-<details open>
+<details closed>
 <summary>TOP</summary>
-<details open>
+<details closed>
 <summary>Beta Estimate</summary>
 <img src="docs/assets/images/Hextri_Plots/TOP/Beta_Estimates.png">
 </details>
 
-<details open>
+<details closed>
 <summary>Standard Error</summary>
 <img src="docs/assets/images/Hextri_Plots/TOP/Standard_Errors.png">
 </details>
 
-<details open>
+<details closed>
 <summary>T-Statistic</summary>
 <img src="docs/assets/images/Hextri_Plots/TOP/T_Statistics.png">
 </details>
 
-<details open>
+<details closed>
 <summary>P-Value</summary>
 <img src="docs/assets/images/Hextri_Plots/TOP/P_Values.png">
 </details>
 </details>
 
-<details open>
+<details closed>
 <summary>1stD</summary>
-<details open>
+<details closed>
 <summary>Beta Estimate</summary>
 <img src="docs/assets/images/Hextri_Plots/1stD/Beta_Estimates.png">
 </details>
 
-<details open>
+<details closed>
 <summary>Standard Error</summary>
 <img src="docs/assets/images/Hextri_Plots/1stD/Standard_Errors.png">
 </details>
 
-<details open>
+<details closed>
 <summary>T-Statistic</summary>
 <img src="docs/assets/images/Hextri_Plots/1stD/T_Statistics.png">
 </details>
 
-<details open>
+<details closed>
 <summary>P-Value</summary>
 <img src="docs/assets/images/Hextri_Plots/1stD/P_Values.png">
 </details>
