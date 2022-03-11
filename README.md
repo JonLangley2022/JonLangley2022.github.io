@@ -52,12 +52,15 @@ To generally view the linear relationship between different stats of match and t
    >We collected the features of the 2022 Super Bowl match and the prediction value varied a lot with even negative spreads which is completely opposite to the real result:
    >
    > Los Angeles Rams defeated the Cincinnati Bengals in Super Bowl 2022 with the score 23-20. Our model at this phase was not robust at all, we kept getting results like +80. +120, -34, -6 which vary from the actual +3 a lot. 
-  #### <ins>5.3 Feature selection
+
+
+#### <ins>5.3 Feature selection
    
    Before tuning hyperparameters, we did feature selection first to improve the performance. 
    >We subtracted “Tm” stats from “Opp” stats and created a new set of features. This brought us down to 16 features. With this reduction in features the prediction was a little more reasonable as the real predictions ranged from -5 to +60. 
    >
    >Additionally, the testing error (MAE) also reduced from 6 to 4, but it was still not robust enough, so we needed to tune different hyperparameters.
+ 
  
 #### <ins>5.4 Hyperparameter Tuning
  
