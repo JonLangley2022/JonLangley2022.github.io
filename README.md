@@ -77,7 +77,7 @@ As you may have noticed, the sigmoid activation function is better for our NFL p
  
 The maximum epochs (how many times each data point will be use) of the model setting is 200 since the loss curves at blow showed us the training loss stopped decreasing around 80 epochs because the validation loss started to increase at that iteration. 
 
-  <center> <img src="docs/assets/images/model/training_losscurve.png"style ="width:50%" style = "height=50%"> </center>
+  <center> <img src="docs/assets/images/model/training_losscurve.png" style ="width:50%" style = "height=50%"> </center>
 
 >The validation data was set to 20% of the training data. 
 
@@ -93,7 +93,7 @@ To test the robustness of our MLP model, we tried different initial values of we
 
 >With this final model, we started to inspect the importance of all features by performing a permutation importance analysis on this Neural-Net Model. 
 
-<center><img src="docs/assets/images/model/Permutation_Importances.png"style ="width:50%" style = "height=50%" ></center>
+<center><img src="docs/assets/images/model/Permutation_Importances.png" style ="width:50%" style = "height=50%" ></center>
 
 This analysis measures the decrease in model performance when shuffling an individual column. This randomly shuffled procedure breaks the relationship between the feature and the predicted value, therefore the drop in performance is indicative of how much the model depends on the feature. 
 
