@@ -168,22 +168,22 @@ Having established that the relationship models are strong and function as expec
 <details closed>
 <summary>RushTD</summary>
 
-<details closed>
+<details open>
  <summary>Beta Estimate</summary>
 <img src="docs/assets/images/Hextri_Plots/RushTD/Beta_Estimates.png">
 </details>
 
-<details closed>
+<details open>
 <summary>Standard Error</summary>
 <img src="docs/assets/images/Hextri_Plots/RushTD/Standard_Errors.png">
 </details>
 
-<details closed>
+<details open>
 <summary>T-Statistic</summary>
 <img src="docs/assets/images/Hextri_Plots/RushTD/T_Statistics.png">
 </details>
 
-<details closed>
+<details open>
 <summary>P-Value</summary>
 <img src="docs/assets/images/Hextri_Plots/RushTD/P_Values.png">
 </details>
@@ -192,22 +192,22 @@ Having established that the relationship models are strong and function as expec
 
 <details closed>
 <summary>QBRating</summary>
-<details closed>
+<details open>
 <summary>Beta Estimate</summary>
 <img src="docs/assets/images/Hextri_Plots/QBRating/Beta_Estimates.png">
 </details>
 
-<details closed>
+<details open>
 <summary>Standard Error</summary>
 <img src="docs/assets/images/Hextri_Plots/QBRating/Standard_Errors.png">
 </details>
 
-<details closed>
+<details open>
 <summary>T-Statistic</summary>
 <img src="docs/assets/images/Hextri_Plots/QBRating/T_Statistics.png">
 </details>
 
-<details closed>
+<details open>
 <summary>P-Value</summary>
 <img src="docs/assets/images/Hextri_Plots/QBRating/P_Values.png">
 </details>
@@ -220,17 +220,17 @@ Having established that the relationship models are strong and function as expec
 <img src="docs/assets/images/Hextri_Plots/TOP/Beta_Estimates.png">
 </details>
 
-<details closed>
+<details open>
 <summary>Standard Error</summary>
 <img src="docs/assets/images/Hextri_Plots/TOP/Standard_Errors.png">
 </details>
 
-<details closed>
+<details open>
 <summary>T-Statistic</summary>
 <img src="docs/assets/images/Hextri_Plots/TOP/T_Statistics.png">
 </details>
 
-<details closed>
+<details open>
 <summary>P-Value</summary>
 <img src="docs/assets/images/Hextri_Plots/TOP/P_Values.png">
 </details>
@@ -238,22 +238,22 @@ Having established that the relationship models are strong and function as expec
 
 <details closed>
 <summary>1stD</summary>
-<details closed>
+<details open>
 <summary>Beta Estimate</summary>
 <img src="docs/assets/images/Hextri_Plots/1stD/Beta_Estimates.png">
 </details>
 
-<details closed>
+<details open>
 <summary>Standard Error</summary>
 <img src="docs/assets/images/Hextri_Plots/1stD/Standard_Errors.png">
 </details>
 
-<details closed>
+<details open>
 <summary>T-Statistic</summary>
 <img src="docs/assets/images/Hextri_Plots/1stD/T_Statistics.png">
 </details>
 
-<details closed>
+<details open>
 <summary>P-Value</summary>
 <img src="docs/assets/images/Hextri_Plots/1stD/P_Values.png">
 </details>
