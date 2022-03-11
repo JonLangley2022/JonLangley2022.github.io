@@ -37,7 +37,7 @@ Now that we have some key definitions explained, we can move onto the actual imp
 Here we highlight our findings thusfar on our aforementioned four covariates of interest.  The first set of graphs compare the covariate of interest to the observed and to the predicted outcomes.  You'll see that for all 4, the predicted outcomes share a very similar relationship to the observed, but do tend to show less variance and more bunching near the central lines.
 
 -insert dropdowns for the 4 figure 2 plots
-
+<img src="docs/assets/images/’rushtd pics’/postpi_Fig2-2.png">
 
 In the next set of graphs we compare the relationship models generated on each covariate of interest from the NN and baseline (linear regression) models.  You can see that despite the complexity difference between neural network and linear regression, they all successfully generate a linear relationship between the observed and predicted outcomes.  Furthermore, it's clear to see that the MLP NN does a far better job across the board at capturing the relationship as the linearity is much stronger.
 
