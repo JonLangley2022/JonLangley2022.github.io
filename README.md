@@ -18,7 +18,8 @@ For our 180B project, we decided to use our domain methodology of postpi (post p
 
 ### Building Neural Network ML Model
  Through testing ,we finalized our N-N (MLPregressor) model with 4 hidden layer and with the size of (32,64,64,128); The maximum epochs(how many times each data point will be use) of the model setting is 200; The fraction of the validation set is 20% of the training data. According to the training loss curve , the training seems to stop around 80 epochs. 
-  ![loss curve](/jonlangley2022.github.io/docs/assets/images/model/training_losscurve.png)
+
+  <img src="/assets/images/model/training_losscurve.png" alt="Alt text" title="Optional title">
  To test the robustness of our MLP model , we try different initial value of weight and bias by changing the parameter of Random_state in scikit learn MLP regressor package:
  
 
