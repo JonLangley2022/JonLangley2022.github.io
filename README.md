@@ -26,21 +26,21 @@ Once obtaining this large dataset, our next task was to clean our dataset so tha
     <li>The fourth and final step in data cleaning was to remove outliers. We did this by using the common rule of thumb which is 1.5 times the Interquartile Range (Quartile3 - Quartile1). This is reasonable because it is very uncommon for an NFL game to end with a Spread larger than 35 points, therefore keeping this data is doing nothing more than adding bias to our model. Below we can see that by using this rule, we are removing a minimal amount of data.</li>
 </ol>
  
-<img src="docs/assets/images/Preprocessing_EDA/image5.png">
-<img src="docs/assets/images/Preprocessing_EDA/image12.png">
+<center><img src="docs/assets/images/Preprocessing_EDA/image5.png"></center>
+<center><img src="docs/assets/images/Preprocessing_EDA/image12.png"></center>
 
 ### <ins> 4.Exploratory data analysis  
 In our exploratory data analysis, we created histograms of each of our variables to understand any skews in our explanatory variables. Additionally, we made scatterplots with each of our variables and our response variable, Spread, to see if we can observe any strong relationships prior to building our model. Most of our variables were non-linearly related with Spread and required a model that can find interactions between variables in our data in order to accurately predict Spread. However, the performance of the QB on both teams showed the most correlation with Spread when analyzing the explanatory variables individually with Spread. In the plots below, we can see that the higher the QB rating of the team in the "Tm" column, the Spread tends to favor them, and vice versa. The worse the "Tm" QB does, the spread favors the "Opp". Using this information we are able to understand that this will be an important feature in our model.
  
-<img src="docs/assets/images/Preprocessing_EDA/image11.png" style="width:100%">
-<img src="docs/assets/images/Preprocessing_EDA/image7.png" style="width:100%">
+<center><img src="docs/assets/images/Preprocessing_EDA/image11.png" style="width:100%"></center>
+<center><img src="docs/assets/images/Preprocessing_EDA/image7.png" style="width:100%"></center>
 
 ### <ins>5.Building Neural Network ML Model 
 
 #### <ins>5.1 Baseline model
 To generally view the linear relationship between different stats of match and the score spread, we build a simple linear regression model. The summary of the baseline model is shown as below.
 
-  <img src="docs/assets/images/model/ols_result.png" style ="width:100%">
+  <center><img src="docs/assets/images/model/ols_result.png" style ="width:100%"></center>
 
   The ordinary least square linear regression model estimates showed us that the team quarterback rating has a strong positive linear relationship with the score difference and the home feature seems not that important. This model is by no means a strong predictor of spread, however it helped us gain a stronger understanding about the relationships in our data going forward. 
   
