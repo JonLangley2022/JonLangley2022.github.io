@@ -46,7 +46,7 @@ To generally view the linear relationship between different stats of match and t
   We also notice that the OLS linear regression model did not capture a strong linear relationship with Temperature and Pass1stD with Spread. We think that there are more of our features that we can not perfectly capture their relation to the score differences simply by linear regression estimates. Therefore, we decided to develop an N-N model to have more accurate predictions since it can capture the non-linear relationships and interactions in the data.
 
 
-  #### <ins>5.2 Multi-layer Perceptron Neural Network Model
+#### <ins>5.2 Multi-layer Perceptron Neural Network Model
 
    At first, we had 34 features as input for a MLP regressor model using relu as activation function , but unfortunately the performance was bad. Even though the training error and test error was low, the real prediction for 2022 Super Bowl Prediction, as well as our validation set predictions, were not even close. 
    >We collected the features of the 2022 Super Bowl match and the prediction value varied a lot with even negative spreads which is completely opposite to the real result:
@@ -58,7 +58,8 @@ To generally view the linear relationship between different stats of match and t
    >We subtracted “Tm” stats from “Opp” stats and created a new set of features. This brought us down to 16 features. With this reduction in features the prediction was a little more reasonable as the real predictions ranged from -5 to +60. 
    >
    >Additionally, the testing error (MAE) also reduced from 6 to 4, but it was still not robust enough, so we needed to tune different hyperparameters.
- #### <ins>5.4 Hyperparameter Tuning
+ 
+#### <ins>5.4 Hyperparameter Tuning
  
 We definitely experienced some hartim while tuning the hyperparameter because there are so many parameter we can change like activation function, hidden layer size, neurons size.etc
 
@@ -87,10 +88,9 @@ To test the robustness of our MLP model, we tried different initial values of we
 
 #### <ins>5.6 Permutation Importance Analysis<ins>
 
-
 >With this final model, we started to inspect the importance of all features by performing a permutation importance analysis on this Neural-Net Model. 
 
- <center><img src="docs/assets/images/model/Permutation_importances.png"style ="width:50%" style = "height=50%" ></center>
+<center><img src="docs/assets/images/model/Permutation_Importances.png"style ="width:50%" style = "height=50%" ></center>
 
 This analysis measures the decrease in model performance when shuffling an individual column. This randomly shuffled procedure breaks the relationship between the feature and the predicted value, therefore the drop in performance is indicative of how much the model depends on the feature. 
 
@@ -103,7 +103,7 @@ According to our permutation graph, RushTD , QBRating, and PassTD are the three 
  
 
 
-### <ins> 6.### Applying Post-Prediction Inference
+### <ins> 6.Applying Post-Prediction Inference
 The permutation graph shows the importance of each feature to the prediction model, but in order to accurately gauge the effectiveness of postpi on inference correction for our data we must apply postpi to each of our covariates, later on in our results we will feature our findings for two high importance features (RushTD and QBRating) and two moderate/low importance features (TOP and 1stD).
 First, some definitions of what exactly postpi is.  Postpi is a method for improving statistical inference by correcting model bias and improving variance estimations.  Model bias refers to the difference between average prediction and the correct observation the model is attempting to predict, high bias is due to an under-fitted prediction model and leads to high training/testing error. Variance estimation relates to a model’s ability to predict on testing and unseen data, high variance is due to over-fitting on training data and leads to high test error.
 
