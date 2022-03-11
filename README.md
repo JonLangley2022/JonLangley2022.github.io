@@ -215,7 +215,7 @@ Having established that the relationship models are strong and function as expec
 
 <details closed>
 <summary>TOP</summary>
-<details closed>
+<details open>
 <summary>Beta Estimate</summary>
 <img src="docs/assets/images/Hextri_Plots/TOP/Beta_Estimates.png">
 </details>
