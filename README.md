@@ -34,20 +34,150 @@ A hypothetical example to help understand this in the context of sports analytic
 
 Now that we have some key definitions explained, we can move onto the actual implementation of postpi.  With our well tuned prediction model ready for use, we apply it on the test set to generate a list of predicted and observed outcomes.  A key aspect of post inference correction is producing a low dimensional (in our case linear regression) model to capture the relationship between the test set's observed and predicted outcomes.  We will later on use the relationship model to simulate "observed outcomes" by plugging in predicted outcomes and returning corrected predictions.  Inference correction by altering the prediction model would be possible for a simple model, however it would be nearly impossible to conduct meaningful improvement by altering a highly complex model such as MLP Neural Networks.  
 
-Here we highlight our findings thusfar on our aforementioned four covariates of interest.  The first set of graphs compare the covariate of interest to the observed and to the predicted outcomes.  You'll see that for all 4, the predicted outcomes share a very similar relationship to the observed, but do tend to show less variance and more bunching near the central lines.
-
--insert dropdowns for the 4 figure 2 plots
-<img src="docs/assets/images/Preprocessing_EDA/image5.png">
-
-In the next set of graphs we compare the relationship models generated on each covariate of interest from the NN and baseline (linear regression) models.  You can see that despite the complexity difference between neural network and linear regression, they all successfully generate a linear relationship between the observed and predicted outcomes.  Furthermore, it's clear to see that the MLP NN does a far better job across the board at capturing the relationship as the linearity is much stronger.
+>Here we highlight our findings thusfar on our aforementioned four covariates of interest.  The first set of graphs compare the covariate of interest to the observed and to the predicted outcomes.  You'll see that for all 4, the predicted outcomes share a very similar relationship to the observed, but do tend to show less variance and more bunching near the central lines.
 
 
--insert dropdowns for the 4 figure 3 plots
+<details open>
+<summary>RushTD</summary>
+<img src="docs/assets/images/rushtd_pics/postpi_Fig2-2.png">
+</details>
+
+<details open>
+<summary>QBRating</summary>
+<img src="docs/assets/images/qbr_pics/qb_postpi_Fig2.png">
+</details>
+
+<details open>
+<summary>TOP</summary>
+<img src="docs/assets/images/top_pics/top_postpi_Fig2.png">
+</details>
+
+<details open>
+<summary>1stD</summary>
+<img src="docs/assets/images/1st_D_pics/postpi_Fig2.png">
+</details>
+
+
+>In the next set of graphs we compare the relationship models generated on each covariate of interest from the NN and baseline (linear regression) models.  You can see that despite the complexity difference between neural network and linear regression, they all successfully generate a linear relationship between the observed and predicted outcomes.  Furthermore, it's clear to see that the MLP NN does a far better job across the board at capturing the relationship as the linearity is much stronger.
+
+
+
+<details open>
+<summary>RushTD</summary>
+<img src="docs/assets/images/rushtd_pics/postpi_Fig3-2.png">
+</details>
+
+<details open>
+<summary>QBRating</summary>
+<img src="docs/assets/images/qbr_pics/qb_postpi_Fig3.png">
+</details>
+
+<details open>
+<summary>TOP</summary>
+<img src="docs/assets/images/top_pics/top_postpi_Fig3.png">
+</details>
+
+<details open>
+<summary>1stD</summary>
+<img src="docs/assets/images/1st_D_pics/postpi_Fig3.png">
+</details>
 
 Having established that the relationship models are strong and function as expected, the next step is implementing bootstrap based correction on the validation set.  The bootstrap repeatedly samples from validation data to better represent the entire population, generates an inference model for each iteration, and returns aggregated metrics for the inference models' corrected beta estimates, standard errors, test statistics, and p-values.
 
  
+<details open>
+<summary>RushTD</summary>
 
+<details open>
+<summary>Beta Estimate</summary>
+<img src="docs/assets/images/Hextri_Plots/RushTD/Beta_Estimates.png">
+</details>
+
+<details open>
+<summary>Standard Error</summary>
+<img src="docs/assets/images/Hextri_Plots/RushTD/Standard_Errors.png">
+</details>
+
+<details open>
+<summary>T-Statistic</summary>
+<img src="docs/assets/images/Hextri_Plots/RushTD/T_Statistics.png">
+</details>
+
+<details open>
+<summary>P-Value</summary>
+<img src="docs/assets/images/Hextri_Plots/RushTD/P_Values.png">
+</details>
+
+</details>
+
+<details open>
+<summary>QBRating</summary>
+<details open>
+<summary>Beta Estimate</summary>
+<img src="docs/assets/images/Hextri_Plots/QBRating/Beta_Estimates.png">
+</details>
+
+<details open>
+<summary>Standard Error</summary>
+<img src="docs/assets/images/Hextri_Plots/QBRating/Standard_Errors.png">
+</details>
+
+<details open>
+<summary>T-Statistic</summary>
+<img src="docs/assets/images/Hextri_Plots/QBRating/T_Statistics.png">
+</details>
+
+<details open>
+<summary>P-Value</summary>
+<img src="docs/assets/images/Hextri_Plots/QBRating/P_Values.png">
+</details>
+</details>
+
+<details open>
+<summary>TOP</summary>
+<details open>
+<summary>Beta Estimate</summary>
+<img src="docs/assets/images/Hextri_Plots/TOP/Beta_Estimates.png">
+</details>
+
+<details open>
+<summary>Standard Error</summary>
+<img src="docs/assets/images/Hextri_Plots/TOP/Standard_Errors.png">
+</details>
+
+<details open>
+<summary>T-Statistic</summary>
+<img src="docs/assets/images/Hextri_Plots/TOP/T_Statistics.png">
+</details>
+
+<details open>
+<summary>P-Value</summary>
+<img src="docs/assets/images/Hextri_Plots/TOP/P_Values.png">
+</details>
+</details>
+
+<details open>
+<summary>1stD</summary>
+<details open>
+<summary>Beta Estimate</summary>
+<img src="docs/assets/images/Hextri_Plots/1stD/Beta_Estimates.png">
+</details>
+
+<details open>
+<summary>Standard Error</summary>
+<img src="docs/assets/images/Hextri_Plots/1stD/Standard_Errors.png">
+</details>
+
+<details open>
+<summary>T-Statistic</summary>
+<img src="docs/assets/images/Hextri_Plots/1stD/T_Statistics.png">
+</details>
+
+<details open>
+<summary>P-Value</summary>
+<img src="docs/assets/images/Hextri_Plots/1stD/P_Values.png">
+</details>
+</details>
 
 
 
