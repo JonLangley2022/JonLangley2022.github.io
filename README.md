@@ -4,27 +4,107 @@
  
  > By: Jonathan Langley, Sujeet Yeramareddy, and Yong Liu
 
-### Introduction
+### <ins>1.Introduction
 
 For our 180B project, we decided to use our domain methodology of postpi (post prediction inference) and apply it to sports analysis based on NFL games.  We are designing a model that can predict the outcome of a football game, such as which team will win and what the margin of their victory will be, and then correcting the statistical inference for selected key features.  The main goals of our investigation is discerning which features most strongly determine the victor of a football game, and subsequently which features provide the most significant means of inferring the margin of that victory.  For example, does the home field advantage give a 50% higher chance of winning by 7 points?  Is the comparative offense to defense rating the most critical factor in securing a win?  Does or does not weather play a statistically significant part in influencing margin of victory?  These are just some of the questions we have brought up and seek to answer during the course of our research, and by conducting this project we are attempting to revolutionize the way NFL analytics are conducted via a more accurate statistical method of inference, postpi. 
 
-### Data Collection
-   Data source: stathead.com/football
-   It is quite complicate and even more time-consuming to automated the scrapting process because we can only access to 100 rows of data at a time per feature (you had to click next at the bottom of the page to go on to rows 200-299, etc) and each feature will have different filter setting on the website.Therefore,we decided to manually copy and save the 10 csv files as we are interested in these  stats: fitst down, passing completion, rush yards,total yards, penalties, temperature at game day,first down. 
-### Data Cleaning & EDA
- After merging all of the csv table we end up with a single csv with 5632 NFL games played from 2000 to 2021 but we actually have 11264 rows datapoints because of different home/away parameters. The combined dataset consisted of 64 total columns ranging from the year the game took place in, to the number of passes completed in the game, to percent of passes completed in the game. 
- A heatmap of null values allowed us to visually identify that 9 columns had 100-301 null values, with a tenth (temperature) having almost 2500 missing values.	
+### <ins>2.Data Collection
+Data source: https://stathead.com/football/
+ 
+For the data collection portion we used this website to manually copy and paste NFL game data from the 2000 season to 2021 season for each individual feature. This process was quite tedious because we were only able to access 100 rows of the data at a time. Additionally, we had to obtain the data for many game features for all NFL games therefore it took longer than expected and required us to split up the simple, yet time-consuming, task. The features that we included in our dataset included, but are not limited to, first downs, passing, rushing, defense, penalties, and temperature.
+
+### <ins> 3.Data Cleaning 
+We used game characteristics such as teams playing, date of game, week of season, and more to merge the many individual datasets together so that we have one big dataset that included over 60 columns representing 5600+ NFL games in the past 21 years. It is important to note that our dataset actually includes over 10,000 rows because each game must be represented by 2 entries to avoid model bias in Spread prediction. The dataset contains two columns that denotes which NFL team is categorized as "Tm" and "Opp" which represent the order of each team's statistics for the team. By swapping the team in these columns we can represent the same game twice which allows us to include positive and negative spreads in our dataset for our model to learn on.
+ 
+ 
+Once obtaining this large dataset, our next task was to clean our dataset so that our data is easier to explore, analyze, and use to predict.
+ 
+<ol>
+    <li>The first step we took was to fix specific columns in our dataset such as "Home" and "Result". The "Home" column originally had an @ symbol when it was a Home game for the team in the "Opp" column, and missing otherwise, therefore we chose to replace the @ values with a 0 to transform this to a binary column that represents when the team in the "Tm" columns was home.</li>
+    <li>The second step we took was to fix the "Result" column was originally in the format of a string like "W 12 - 9" which represents the score of the NFL game in the format "TmOutcome TmScore - OppScore” based on the teams in each of these columns. We took this column and used string manipulation to convert it into a column named Spread which is our response variable that we are trying to predict. Spread was calculated by subtracting the score of "Opp" from the score of "Tm" (TmScore - OppScore).</li>
+    <li>The third step we took was to impute missing values in columns that contained missing data. We did this by randomly sampling from the column with missing values and randomly placing them in the column. Most of our columns had a relatively low amount of missing values, therefore by doing this we are not compromising the integrity of our data. Below is a heatmap representing which columns were imputed in our dataset.</li>
+    <li>The fourth and final step in data cleaning was to remove outliers. We did this by using the common rule of thumb which is 1.5 times the Interquartile Range (Quartile3 - Quartile1). This is reasonable because it is very uncommon for an NFL game to end with a Spread larger than 35 points, therefore keeping this data is doing nothing more than adding bias to our model. Below we can see that by using this rule, we are removing a minimal amount of data.</li>
+</ol>
+ 
+<img src="docs/assets/images/Preprocessing_EDA/image5.png">
+<img src="docs/assets/images/Preprocessing_EDA/image12.png">
+
+### <ins> 4.Exploratory data analysis  
+In our exploratory data analysis, we created histograms of each of our variables to understand any skews in our explanatory variables. Additionally, we made scatterplots with each of our variables and our response variable, Spread, to see if we can observe any strong relationships prior to building our model. Most of our variables were non-linearly related with Spread and required a model that can find interactions between variables in our data in order to accurately predict Spread. However, the performance of the QB on both teams showed the most correlation with Spread when analyzing the explanatory variables individually with Spread. In the plots below, we can see that the higher the QB rating of the team in the "Tm" column, the Spread tends to favor them, and vice versa. The worse the "Tm" QB does, the spread favors the "Opp". Using this information we are able to understand that this will be an important feature in our model.
+ 
+<img src="docs/assets/images/Preprocessing_EDA/image11.png" style="width:100%">
+<img src="docs/assets/images/Preprocessing_EDA/image7.png" style="width:100%">
+
+### <ins>5.Building Neural Network ML Model 
+
+#### <ins>5.1 Baseline model
+To generally view the linear relationship between different stats of match and the score spread, we build a simple linear regression model. The summary of the baseline model is shown as below.
+
+  <img src="docs/assets/images/model/ols_result.png" style ="width:100%">
+
+  The ordinary least square linear regression model estimates showed us that the team quarterback rating has a strong positive linear relationship with the score difference and the home feature seems not that important. This model is by no means a strong predictor of spread, however it helped us gain a stronger understanding about the relationships in our data going forward. 
+  
+  We also notice that the OLS linear regression model did not capture a strong linear relationship with Temperature and Pass1stD with Spread. We think that there are more of our features that we can not perfectly capture their relation to the score differences simply by linear regression estimates. Therefore, we decided to develop an N-N model to have more accurate predictions since it can capture the non-linear relationships and interactions in the data.
 
 
-### Building Neural Network ML Model
- Through testing ,we finalized our N-N (MLPregressor) model with 4 hidden layer and with the size of (32,64,64,128); The maximum epochs(how many times each data point will be use) of the model setting is 200; The fraction of the validation set is 20% of the training data. According to the training loss curve , the training seems to stop around 80 epochs. 
+  #### <ins>5.2 Multi-layer Perceptron Neural Network Model
 
-  <img src="/assets/images/model/training_losscurve.png" alt="Alt text" title="Optional title">
- To test the robustness of our MLP model , we try different initial value of weight and bias by changing the parameter of Random_state in scikit learn MLP regressor package:
+   At first, we had 34 features as input for a MLP regressor model using relu as activation function , but unfortunately the performance was bad. Even though the training error and test error was low, the real prediction for 2022 Super Bowl Prediction, as well as our validation set predictions, were not even close. 
+   >We collected the features of the 2022 Super Bowl match and the prediction value varied a lot with even negative spreads which is completely opposite to the real result:
+   >
+   > Los Angeles Rams defeated the Cincinnati Bengals in Super Bowl 2022 with the score 23-20. Our model at this phase was not robust at all, we kept getting results like +80. +120, -34, -6 which vary from the actual +3 a lot. 
+  #### <ins>5.3 Feature selection
+   
+   Before tuning hyperparameters, we did feature selection first to improve the performance. 
+   >We subtracted “Tm” stats from “Opp” stats and created a new set of features. This brought us down to 16 features. With this reduction in features the prediction was a little more reasonable as the real predictions ranged from -5 to +60. 
+   >
+   >Additionally, the testing error (MAE) also reduced from 6 to 4, but it was still not robust enough, so we needed to tune different hyperparameters.
+ #### <ins>5.4 Hyperparameter Tuning
+ 
+We definitely experienced some hartim while tuning the hyperparameter because there are so many parameter we can change like activation function, hidden layer size, neurons size.etc
+
+
+
+>Below is a table that briefly summarizes some of the hyperparameter combinations that we tried.
+
+<center><img src="docs/assets/images/model/model_tuning.png" style ="width:100%" style ="width:70%" style = "height=70%"> </center>
+
+As you may have noticed, the sigmoid activation function is better for our NFL predictions and since we have around 10,000 data points, the hidden-layer size shouldn't be large, to avoid overfitting. Experiment 5 actually resulted in higher errors compared to others with smaller hider layer size. We also surprisingly found that 2ⁿ neurons in each hidden layer performs much better than other random numbers. 
+>After trying out tons of hyperparameter, we finalized our MLP-Regressor model : with 4 hidden layers and a neuron size combination of (32, 64, 64, 128)
+ 
+The maximum epochs (how many times each data point will be use) of the model setting is 200 since the loss curves at blow showed us the training loss stopped decreasing around 80 epochs because the validation loss started to increase at that iteration. 
+
+  <center> <img src="docs/assets/images/model/training_losscurve.png"style ="width:50%" style = "height=50%"> </center>
+
+>The validation data was set to 20% of the training data. 
+
+#### <ins>5.5 Test Robustness
+
+To test the robustness of our MLP model, we tried different initial values of weight and bias by changing the parameter of “random_state” in scikit-learn MLP regressor package.
+
+  <center><img src="docs/assets/images/model/test_robutness.png" ></center>
+
+>After trying out different initial values of weight and bias we can conclude that our model is robust since the training error, test error, and prediction for the super bowl this year did not have large variance. In the real world, our averaged prediction among these 10 different initializations is 4.437 which is very close to the real value 3. .
+
+#### <ins>5.6 Permutation Importance Analysis<ins>
+
+
+>With this final model, we started to inspect the importance of all features by performing a permutation importance analysis on this Neural-Net Model. 
+
+ <center><img src="docs/assets/images/model/Permutation_importances.png"style ="width:50%" style = "height=50%" ></center>
+
+This analysis measures the decrease in model performance when shuffling an individual column. This randomly shuffled procedure breaks the relationship between the feature and the predicted value, therefore the drop in performance is indicative of how much the model depends on the feature. 
+
+According to our permutation graph, RushTD , QBRating, and PassTD are the three most important features. It also agrees with what OLS linear regression estimates’ results that Temperature, Pass1stD, etc has little explanation of Spread. 
+
+
+>We should always keep in mind that permutation importances does not reflect the intrinsic predictive value of a feature by itself but how important this feature is for this particular MLP regressor model. 
+>
+>Although we have shown that this model performs extremely well, we still want to do further research like correcting the statistical inference on the relationship between the selected features and the game spread.
  
 
 
-### Applying Post-Prediction Inference
+### <ins> 6.Applying Post-Prediction Inference
 The permutation graph shows the importance of each feature to the prediction model, but in order to accurately gauge the effectiveness of postpi on inference correction for our data we must apply postpi to each of our covariates, later on in our results we will feature our findings for two high importance features (RushTD and QBRating) and two moderate/low importance features (TOP and 1stD).
 First, some definitions of what exactly postpi is.  Postpi is a method for improving statistical inference by correcting model bias and improving variance estimations.  Model bias refers to the difference between average prediction and the correct observation the model is attempting to predict, high bias is due to an under-fitted prediction model and leads to high training/testing error. Variance estimation relates to a model’s ability to predict on testing and unseen data, high variance is due to over-fitting on training data and leads to high test error.
 
