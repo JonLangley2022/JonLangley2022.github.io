@@ -47,7 +47,7 @@ In the next set of graphs we compare the relationship models generated on each c
 Having established that the relationship models are strong and function as expected, the next step is implementing bootstrap based correction on the validation set.  The bootstrap repeatedly samples from validation data to better represent the entire population, generates an inference model for each iteration, and returns aggregated metrics for the inference models' corrected beta estimates, standard errors, test statistics, and p-values.
 
  
-
+-insert figure 4 plots right here
 
 
 
